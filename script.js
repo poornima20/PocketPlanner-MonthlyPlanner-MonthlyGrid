@@ -91,33 +91,21 @@ todayBtn.onclick = () => {
 const calendarEl = document.querySelector(".calendar");
 
 let startY = 0;
-let currentY = 0;
 let isSwiping = false;
 
 calendarEl.addEventListener("touchstart", (e) => {
-  if (e.target.tagName === "TEXTAREA") return; // allow typing
+  if (e.target.tagName === "TEXTAREA") return;
 
   startY = e.touches[0].clientY;
   isSwiping = true;
 }, { passive: true });
 
-calendarEl.addEventListener("touchmove", (e) => {
+calendarEl.addEventListener("touchend", (e) => {
   if (!isSwiping) return;
-
-  currentY = e.touches[0].clientY;
-  const deltaY = currentY - startY;
-
-  // Only prevent scroll if it's clearly a vertical swipe
-  if (Math.abs(deltaY) > 10) {
-    e.preventDefault();
-  }
-}, { passive: false });
-
-calendarEl.addEventListener("touchend", () => {
-  if (!isSwiping) return;
-
-  const deltaY = startY - currentY;
   isSwiping = false;
+
+  const endY = e.changedTouches[0].clientY;
+  const deltaY = startY - endY;
 
   if (Math.abs(deltaY) > 60) {
     currentDate.setMonth(
@@ -126,6 +114,7 @@ calendarEl.addEventListener("touchend", () => {
     renderCalendar(currentDate);
   }
 });
+
 
 
 renderCalendar(currentDate);
