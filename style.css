@@ -176,3 +176,7 @@ body {
     display: inline;
   }
 }
+
+.calendar {
+  touch-action: pan-x; /* allows vertical swipe, blocks browser hijack */
+}
