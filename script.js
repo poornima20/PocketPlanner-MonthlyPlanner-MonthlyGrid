@@ -87,34 +87,6 @@ todayBtn.onclick = () => {
   renderCalendar(currentDate);
 };
 
-/* MOBILE VERTICAL SWIPE */
-const calendarEl = document.querySelector(".calendar");
-
-let startY = 0;
-let isSwiping = false;
-
-calendarEl.addEventListener("touchstart", (e) => {
-  if (e.target.tagName === "TEXTAREA") return;
-
-  startY = e.touches[0].clientY;
-  isSwiping = true;
-}, { passive: true });
-
-calendarEl.addEventListener("touchend", (e) => {
-  if (!isSwiping) return;
-  isSwiping = false;
-
-  const endY = e.changedTouches[0].clientY;
-  const deltaY = startY - endY;
-
-  if (Math.abs(deltaY) > 60) {
-    currentDate.setMonth(
-      currentDate.getMonth() + (deltaY > 0 ? 1 : -1)
-    );
-    renderCalendar(currentDate);
-  }
-});
-
 
 
 renderCalendar(currentDate);
