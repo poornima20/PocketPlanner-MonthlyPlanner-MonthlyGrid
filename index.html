@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Month View Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Inter only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="month-header">
+  <div class="today-row">
+    <button class="today-btn" id="todayBtn">
+      <i data-lucide="calendar-days"></i>
+    </button>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn prev" id="prevMonth">
+      <i data-lucide="chevron-left"></i>
+    </button>
+
+    <h1 class="month-title" id="monthTitle"></h1>
+
+    <button class="nav-btn next" id="nextMonth">
+      <i data-lucide="chevron-right"></i>
+    </button>
+  </div>
+</header>
+
+<main class="calendar">
+ <div class="weekdays">
+  <div><span class="full">Monday</span><span class="short">Mon</span></div>
+  <div><span class="full">Tuesday</span><span class="short">Tue</span></div>
+  <div><span class="full">Wednesday</span><span class="short">Wed</span></div>
+  <div><span class="full">Thursday</span><span class="short">Thu</span></div>
+  <div><span class="full">Friday</span><span class="short">Fri</span></div>
+  <div><span class="full">Saturday</span><span class="short">Sat</span></div>
+  <div><span class="full">Sunday</span><span class="short">Sun</span></div>
+</div>
+
+
+  <div class="grid" id="calendarGrid"></div>
+</main>
+
+<script src="script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
