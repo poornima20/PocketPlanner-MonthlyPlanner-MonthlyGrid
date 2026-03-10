@@ -12,7 +12,7 @@ const monthNames = [
 ];
 
 function storageKey(year, month) {
-  return `planner-${year}-${month}`;
+  return `fullmoon.pocketplanner.monthlygrid.${year}-${month}`;
 }
 
 function renderCalendar(date) {
