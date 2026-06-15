@@ -1,182 +1,380 @@
+/* ==========================
+   RESET
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html,body{
+  height:100%;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:none;
+}
+
 body {
   height: 100vh;
-  font-family: "Inter", sans-serif;
-  background: #fffefc;
-  color: #111;
-  overflow: hidden; /* NO vertical scroll */
+  font-family: Inter, sans-serif;
+  background: #ffffff;
+  overflow-y:auto;
+  scrollbar-width:none;
 }
 
-/* HEADER */
-.month-header {
-  padding: 14px 18px 6px;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  display:none;
 }
 
-.today-row {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 6px;
-}
+/* ==========================
+   PLANNER
+========================== */
 
-.today-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  background: none;
-  border: none;
-  color: #444;
-  cursor: pointer;
-}
-
-.today-btn svg {
-  width: 14px;
-  height: 14px;
-  stroke-width: 1.5;
-}
-
-.nav-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-}
-
-.month-title {
-  text-align: center;
-   font-size: clamp(16px, 3.5vw, 22px); /* smaller */
-  font-weight: 500;
-}
-
-.nav-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  background: none;
-  border: none;
-  color: #222;
-  cursor: pointer;
-}
-
-/* CALENDAR */
-.calendar {
-  height: calc(100vh - 110px);
-  padding: 8px 18px 6px; /* space at TOP, very little at bottom */
+.planner {
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 16px;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
-.weekdays {
-  margin-top: 10px;   /* space BELOW month title */
+.planner::-webkit-scrollbar{
+  display:none;
 }
 
+/* ==========================
+   HEADER
+========================== */
 
+.planner-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.planner-title{
+  display:flex;
+  align-items:flex-end;
+  gap:12px;
+}
+
+#monthLabel{
+  font-size: 1.25rem;
+  text-transform:uppercase;
+  margin-bottom:4px;
+  font-weight:600;
+  color:#444;
+  letter-spacing: 2px;
+}
+
+.planner-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.planner-nav button{
+  width:34px;
+  height:34px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  font-size:18px;
+}
+
+/* ==========================
+   Navigation
+========================== */
+
+.today-btn{
+  height: 32px;
+  padding:0 ;
+  font-size: 5px;
+  border:1px solid #d8d3cc;
+  border-radius:999px;
+  background:white;
+  color:#666;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.today-btn:hover{
+  background:#faf8f4;
+}
+
+/* ARROWS */
+
+.nav-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid #d8d3cc;
+  background:white;
+  cursor:pointer;
+  font-size:22px;
+  color:#666;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s;
+}
+
+.nav-btn:hover{
+  background:#faf8f4;
+}
+
+.nav-btn svg{
+  width:18px;
+  height:18px;
+  stroke-width:2;
+}
+
+.today-btn svg{
+  width:16px;
+  height:16px;
+  stroke-width:2;
+}
+/* ==========================
+   WEEKDAYS
+========================== */
 
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  font-size: 12px;
-  color: #222;
-  border-left: 1.5px solid #555;
+  padding-top: 15px;
 }
 
 .weekdays div {
-  padding: 6px;
-  border-top: 1.5px solid #555;
-  border-right: 1.5px solid #555;
-  border-bottom: 1.5px solid #555;
-  text-align: center;       /* IMPORTANT */
-  white-space: nowrap;      /* prevents wrap */
+  text-align: center;
+  font-weight: 500;
+  padding: 0;
+  font-size: 10px;
+  color:#555;
+  letter-spacing: 2px;
+  text-transform:uppercase;
 }
 
-/* GRID WITH STRONG BORDERS */
-.grid {
+/* ==========================
+   CALENDAR
+========================== */
+
+.calendar-grid {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  border-top: 1.5px solid #555;
-  border-left: 1.5px solid #555;
+  grid-template-rows: repeat(5, 120px);
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  background: white;
+  min-height: 0;
 }
 
-
-.day {
+.day-card {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
   position: relative;
-  border-right: 1.5px solid #555;
-  border-bottom: 1.5px solid #555;
+  background: white;
+  padding: 0;
+}
+
+.day-card:hover {
+  background: #fbfbfb;
+}
+
+/* ==========================
+   MINI JOURNAL PREVIEW
+========================== */
+
+.mini-wrapper{
+  width:100%;
+  height:100%;
+}
+
+.mini-journal{
+  width:100%;
+  height:100%;
+
+  padding:5px;
+
+  display:flex;
+  flex-direction:column;
+
+  background:white;
+}
+
+.mini-header{
+  font-size:11px;
+  font-weight:600;
+  margin: 2px;
+  text-align: right;
 }
 
 
-/* DATE NUMBER */
-.day .date {
-  position: absolute;
-  top: 4px;
-  left: 6px;
-  font-size: 10px;
-  font-weight: 500;
-  color: #222;
-  pointer-events: none;
+.mini-content{
+  font-size:9px;
+  line-height:1.4;
+  color:#444;
 }
 
-/* TEXTAREA CELL */
-.day textarea {
-  width: 100%;
-  height: 100%;
-  padding: 22px 6px 6px;
-  border: none;
-  resize: none;
-  background: transparent;
-  font-family: "Inter", sans-serif;
-  font-size: 10px;
-  line-height: 1.2;
-  outline: none;
-}
+/* ==========================
+   MODAL
+========================== */
 
-/* hide scrollbar (extra safety) */
-.day textarea::-webkit-scrollbar {
+.day-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
   display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-/* TODAY */
-.day.today .date {
-  font-weight: 600;
-  color: #c62828; /* planner red */
+.day-modal.active {
+  display: flex;
+}
+
+.day-sheet{
+
+  width:min(88vw,300px);
+
+  height:min(86vh,650px);
+
+  background:white;
+
+  border-radius:34px;
+
+  padding:22px;
+
+  display:flex;
+
+  flex-direction:column;
+}
+
+.day-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  margin-bottom:10px;
+}
+
+.journal-date-group{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+#modalDay{
+
+  font-size:18px;
+
+  font-weight:700;
+}
+
+#modalWeekday{
+
+  font-size:13px;
+
+  font-weight:600;
+}
+
+#modalSubDate{
+
+  margin-left:16px;
+
+  font-size:10px;
+
+  color:#9a9a9a;
+}
+.journal-divider{
+
+  border-top:2px dotted #c8c8c8;
+
+  margin-bottom:16px;
+}
+
+.day-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.day-content textarea{
+  width:100%;
+  height:100%;
+
+  border:none;
+  outline:none;
+
+  resize:none;
+
+  background:transparent;
+
+  font-size:14px;
+  line-height:1.8;
+  color:#0b0b0b;
+  font-family:"Cormorant Garamond", serif;
+}
+
+#closeModal{
+  width:24px;
+  height:24px;
+  border:1px solid #bbb;
+  background:white;
+  border-radius:4px;
+  cursor:pointer;
 }
 
 
-/* MOBILE */
-@media (max-width: 600px) {
-  .nav-btn span {
-    display: none;
+/* ==========================
+   MODAL
+========================== */
+@media (max-width: 600px){
+
+   .planner{
+    height:auto;
+    min-height:100vh;
+    overflow-y:auto;
   }
 
-  .weekdays {
-    font-size: 11px;
+  .calendar-grid{
+    flex:none;
+    grid-template-rows: repeat(6, 90px);
   }
 
-  .calendar {
-    padding: 0 10px 10px;
+  .mini-header{
+    font-size:10px;
   }
-}
-
-.weekdays .short {
-  display: none;
-}
-
-@media (max-width: 600px) {
-  .weekdays .full {
-    display: none;
+  .mini-journal{
+    padding:3px;
   }
-  .weekdays .short {
-    display: inline;
-  }
-}
 
-.calendar {
-  touch-action: pan-x; /* allows vertical swipe, blocks browser hijack */
+  .mini-header{
+    font-size:8px;
+    margin-bottom:2px;
+  }
+
+  .mini-divider{
+    margin-bottom:3px;
+  }
+
+  .mini-content{
+    font-size:5px;
+    line-height:1;
+    letter-spacing:-0.1px;
+  }
+
 }

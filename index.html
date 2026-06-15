@@ -1,58 +1,80 @@
 <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Month View Planner</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Inter only -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Monthly Grid</title>
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="planner">
+      <!-- Header -->
+      <header class="planner-header">
+        <div class="planner-title">
+          <span id="monthLabel"> December 2026 </span>
+        </div>
 
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+        <div class="planner-nav">
+          <button id="todayBtn" class="today-btn">
+            <i data-lucide="calendar-days"></i>
+          </button>
+          <button id="prevMonth" class="nav-btn">
+            <i data-lucide="circle-chevron-left"></i>
+          </button>
+          <button id="nextMonth" class="nav-btn">
+            <i data-lucide="circle-chevron-right"></i>
+          </button>
+        </div>
+      </header>
+      <!-- Weekday Names -->
+      <section class="weekdays">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </section>
 
-<header class="month-header">
-  <div class="today-row">
-    <button class="today-btn" id="todayBtn">
-      <i data-lucide="calendar-days"></i>
-    </button>
-  </div>
+      <!-- Calendar Grid -->
+      <!-- Monthly Calendar -->
+      <section id="calendarGrid" class="calendar-grid"></section>
 
-  <div class="nav-row">
-    <button class="nav-btn prev" id="prevMonth">
-      <i data-lucide="chevron-left"></i>
-    </button>
+      <!-- Day Modal -->
+      <div id="dayModal" class="day-modal">
+        <div class="day-sheet">
+          <div class="day-header">
+            <div class="journal-date-group">
+              <div id="modalDay"></div>
 
-    <h1 class="month-title" id="monthTitle"></h1>
+              <div id="modalWeekday"></div>
 
-    <button class="nav-btn next" id="nextMonth">
-      <i data-lucide="chevron-right"></i>
-    </button>
-  </div>
-</header>
+              <div id="modalSubDate"></div>
+            </div>
 
-<main class="calendar">
- <div class="weekdays">
-  <div><span class="full">Monday</span><span class="short">Mon</span></div>
-  <div><span class="full">Tuesday</span><span class="short">Tue</span></div>
-  <div><span class="full">Wednesday</span><span class="short">Wed</span></div>
-  <div><span class="full">Thursday</span><span class="short">Thu</span></div>
-  <div><span class="full">Friday</span><span class="short">Fri</span></div>
-  <div><span class="full">Saturday</span><span class="short">Sat</span></div>
-  <div><span class="full">Sunday</span><span class="short">Sun</span></div>
-</div>
+            <button id="closeModal">✕</button>
+          </div>
 
+          <div class="journal-divider"></div>
+          <div class="day-content">
+            <textarea
+              id="dayNote"
+              maxlength="250"
+              placeholder="Write something..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </main>
 
-  <div class="grid" id="calendarGrid"></div>
-</main>
-
-<script src="script.js"></script>
-<script>lucide.createIcons();</script>
-</body>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+  </body>
 </html>
