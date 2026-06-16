@@ -177,21 +177,16 @@ dayNote.addEventListener("input", () => {
   }
 );
 
+
+/* ====================================================================
+  Journal Notes
+======================================================================= */
 const MAX_LINES = 8;
 
-dayNote.addEventListener(
-  "input",
-  () => {
-
-    const lines =
-      dayNote.value.split("\n");
-
+dayNote.addEventListener("input",() => {
+    const lines =  dayNote.value.split("\n");
     if(lines.length > MAX_LINES){
-
-      dayNote.value =
-        lines
-          .slice(0, MAX_LINES)
-          .join("\n");
+      dayNote.value =  lines.slice(0, MAX_LINES).join("\n");
     }
   }
 );

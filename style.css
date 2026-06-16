@@ -242,68 +242,46 @@ body::-webkit-scrollbar{
 }
 
 .day-sheet{
-
   width:min(88vw,300px);
-
   height:min(86vh,650px);
-
   background:white;
-
   border-radius:34px;
-
   padding:22px;
-
   display:flex;
-
   flex-direction:column;
 }
 
 .day-header{
-
   display:flex;
-
   justify-content:space-between;
-
   align-items:flex-start;
-
   margin-bottom:10px;
 }
 
 .journal-date-group{
-
   display:flex;
-
   align-items:center;
-
   gap:8px;
 }
 
 #modalDay{
-
   font-size:18px;
-
   font-weight:700;
 }
 
 #modalWeekday{
-
   font-size:13px;
-
   font-weight:600;
 }
 
 #modalSubDate{
-
   margin-left:16px;
-
   font-size:10px;
-
   color:#9a9a9a;
 }
+
 .journal-divider{
-
   border-top:2px dotted #c8c8c8;
-
   margin-bottom:16px;
 }
 
@@ -315,14 +293,10 @@ body::-webkit-scrollbar{
 .day-content textarea{
   width:100%;
   height:100%;
-
   border:none;
   outline:none;
-
   resize:none;
-
   background:transparent;
-
   font-size:14px;
   line-height:1.8;
   color:#0b0b0b;
@@ -337,8 +311,6 @@ body::-webkit-scrollbar{
   border-radius:4px;
   cursor:pointer;
 }
-
-
 
 .today-date{
   color:#e53935;
@@ -357,8 +329,9 @@ body::-webkit-scrollbar{
   }
 
   .calendar-grid{
-    flex:none;
-    grid-template-rows: repeat(6, 90px);
+    flex:1;
+    grid-template-rows:repeat(6,minmax(80px,1fr));
+    height:65vh;
   }
 
   .mini-header{
@@ -381,6 +354,12 @@ body::-webkit-scrollbar{
     font-size:5px;
     line-height:1;
     letter-spacing:-0.1px;
+  }
+
+  .day-sheet{
+    width:88vw;
+    height:70vh;
+    max-height:520px;
   }
 
 }
