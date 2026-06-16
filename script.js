@@ -172,7 +172,7 @@ dayNote.addEventListener("input", () => {
     const content = preview.querySelector(".mini-content"  );
 
     if(content){
-      content.textContent = dayNote.value;
+      content.innerHTML = dayNote.value.split("\n").filter(line => line.trim()).map(line => `&bull; ${line}`).join("<br>");
     }
   }
 );
