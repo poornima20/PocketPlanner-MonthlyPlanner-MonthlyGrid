@@ -87,6 +87,9 @@ function createDummyMonth() {
 
   for(let day = 1; day <= daysInMonth; day++)
     {
+
+    const today = new Date();
+    const isToday = year === today.getFullYear() && month === today.getMonth() && day === today.getDate();  
     const dateKey =`${year}-${String(month + 1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
     const card = document.createElement("div");
     card.className = "day-card";
@@ -95,7 +98,7 @@ function createDummyMonth() {
         <div class="mini-wrapper">
 
           <div class="mini-journal" id="preview-${dateKey}">
-            <div class="mini-header"> ${day}  </div>
+            <div class="mini-header ${isToday ? "today-date" : ""}"> ${day}</div>
             <div class="mini-content"> ${notes[dateKey]?.note || ""} </div>
           </div>
 

@@ -339,6 +339,12 @@ body::-webkit-scrollbar{
 }
 
 
+
+.today-date{
+  color:#e53935;
+  font-weight:700;
+}
+
 /* ==========================
    MODAL
 ========================== */
